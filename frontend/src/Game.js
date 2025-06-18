@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import io from 'socket.io-client';
 import Board from './Board';
+import Chat from './Chat';
 
 const socket = io('http://localhost:5000');
 
@@ -37,6 +38,7 @@ function Game({ room }) {
       <h3>You are: {mark}</h3>
       <h3>{status || `Turn: ${game?.turn}`}</h3>
       <Board board={game?.board || []} onClick={handleMove} />
+      <Chat socket={socket} room={room} />
     </div>
   );
 }

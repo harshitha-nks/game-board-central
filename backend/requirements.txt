@@ -2,3 +2,6 @@ flask
 Flask-SocketIO
 eventlet
 flask-cors
+Flask-SQLAlchemy
+psycopg2-binary
+redis
