@@ -14,8 +14,11 @@ Game Board Central supports:
 - Real-time turn-by-turn gameplay
 - Win and tie detection
 - Room-based matchmaking
+- Real-time chat between players
 - Automatic state synchronization between players
 - Reconnection-safe architecture
+- Persistent game history in PostgreSQL
+- In-memory state caching via Redis
 
 ---
 
@@ -26,7 +29,10 @@ Game Board Central supports:
 | Frontend   | React              | Component-based UI for game and lobby      |
 | Backend    | Flask + Flask-SocketIO | WebSocket server to manage game state     |
 | Transport  | Socket.IO          | Real-time duplex communication              |
+| Database   | PostgreSQL         | Persistent storage of game records     |
+| Cache/Queue| Redis              | In-memory state and real-time message broadcasting |
 | Styling    | CSS Grid           | Clean and responsive game layout           |
+|  DevOps    | Docker + Docker Compose| Containerized full-stack deployment    |
 
 ---
 
@@ -48,10 +54,21 @@ npm start
 ```
 - Runs on http://localhost:3000
 ---
+## Running the Application with Docker
+Ensure Docker and Docker Compose are installed
+```
+docker-compose up --build
+```
+This will spin up:
+- Frontend on http://localhost:3000
+- Backend on http://localhost:5000
+- PostgreSQL on port 5432
+- Redis on port 6379
+---
 ## How to Play
 1. Open http://localhost:3000 in two separate browser windows or devices.
-2. Enter the same Room ID in both windows.
-3. Start playing real-time Tic Tac Toe.
+2. Enter the same Room ID in both windows or devices. 
+3. Play Tic Tac Toe in real-time with full synchronization and chat.
 ---
 ## Features
 - Real-time gameplay with Socket.IO
