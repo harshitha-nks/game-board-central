@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+  backend:
+    build: ./backend
+    depends_on: [redis, postgres]
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/gamedb
+      - REDIS_HOST=redis
+    ports: ['5000:5000']
+  frontend:
+    build: ./frontend
+    depends_on: [backend]
+    ports: ['3000:3000']
+  redis:
+    image: redis:alpine
+    ports: ['6379:6379']
+  postgres:
+    image: postgres:14-alpine
+    environment:
+      POSTGRES_DB: gamedb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+volumes:
+  pgdata:
