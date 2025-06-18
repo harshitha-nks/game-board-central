@@ -64,6 +64,16 @@ This will spin up:
 - Backend on http://localhost:5000
 - PostgreSQL on port 5432
 - Redis on port 6379
+
+### To stop docker and clean up
+```
+docker-compose down
+```
+This stops all containers and removes associated networks.
+Use --volumes if you also want to delete volumes:
+```
+docker-compose down --volumes
+```
 ---
 ## How to Play
 1. Open http://localhost:3000 in two separate browser windows or devices.
